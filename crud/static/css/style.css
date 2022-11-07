@@ -1,7 +1,18 @@
+/* Login page */
 .login-container {
     width: 100%;
 }
 
 .login-box {
     width: 350px;
+}
+
+/* alert */
+.myalert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    width: 320px;
+    overflow-y: auto;
 }

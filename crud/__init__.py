@@ -1,12 +1,14 @@
 import os
 
 from flask import Flask, render_template
+from crud.auth import login_required
 
 
 def create_app():
     # create and configure the app
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
+    # app.config['SECRET_KEY'] = 'Flugelhell'
 
     # ensure the instance folder exists
     # try:
@@ -14,14 +16,12 @@ def create_app():
     # except OSError:
     #     pass
 
-    @app.route('/')
-    def home():
-        print('index call')
-        return render_template('index.html')
-
+    from . import home
     from . import hello
     from . import auth
 
+    app.register_blueprint(home.bp)
+    app.add_url_rule('/', endpoint='index')
     app.register_blueprint(hello.bp)
     app.register_blueprint(auth.bp)
 

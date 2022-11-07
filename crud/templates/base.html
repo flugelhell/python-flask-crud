@@ -7,12 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap-5.2.2-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/animate.css/4.1.1/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-danger alert-dismissible fade show myalert animate__animated animate__bounceIn" role="alert">
+        {{ message }}
+        <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
+    </div>
+
+    {% endfor %}
     {% block header %}{% endblock %}
     {% block content %}{% endblock %}
     <script src="{{ url_for('static', filename='/vendors/bootstrap-5.2.2-dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='/vendors/jquery-3.6.1/jquery-3.6.1.min.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='/vendors/bootstrap-notify-3.1.3/dist/bootstrap-notify.min.js') }}"></script> -->
 
 </html>

@@ -5,5 +5,79 @@ This is Index
 {% endblock %}
 
 {% block content %}
-ini index
+<div class="container-fluid vh-100 p-0 bg-home">
+    <!-- Navigation Home -->
+    <nav class="navbar navbar-expand-lg bg-teal p-0">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-small text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="profile-img rounded-circle" src="{{ url_for('static', filename='/images/default_profile.jpg') }}" alt="Profile Image"> Yayat Suyatna
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item font-small" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item font-small" href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Content Home -->
+    <div class="container-fluid text-center col-md-12">
+
+        <div class="row home-search"></div>
+    </div>
+    <div class="container text-center col-md-6">
+        <div class="row justify-content-md-left">
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+            <div class="col-md-2 mb-4">
+                <a href="#" class="text-decoration-none text-white link-home-icon">
+                    <img class="home-icon" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                    <div>App Name</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

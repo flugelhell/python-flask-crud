@@ -16,3 +16,53 @@
     width: 320px;
     overflow-y: auto;
 }
+
+/* Nav */
+.profile-img {
+    width: 32px;
+}
+
+.font-small {
+    font-size: small;
+}
+
+/* Background Color */
+.bg-teal {
+    background-color: #4FA095;
+}
+
+.bg-yellow {
+    background-color: #FFE9B1;
+}
+
+.bg-red {
+    background-color: #FF5D5D;
+}
+
+.bg-blue {
+    background-color: #17A2B8;
+}
+
+.home-search {
+    height: 100px;
+}
+
+.home-icon {
+    height: 72px;
+    margin-bottom: 10px;
+}
+
+.link-home-icon:hover>.home-icon {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.bg-home {
+    background-image: url('../images/home-background.jpg');
+}
+
+/* .container .row .col-md-2 {
+    border: 1px solid grey;
+} */

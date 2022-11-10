@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}
+This is Index
+{% endblock %}
+
+{% block navigation %}
+{% include 'navigation.html' %}
+{% endblock %}
+
+{% block content %}
+<!-- Content -->
+<div class="container-fluid col-md-12 p-0">
+    <div class="row align-items-start p-3 border-bottom pe-0 me-0">
+        <div class="col-md-6">
+            Nama Menu
+        </div>
+        <div class="col-md-6">
+            One of three columns
+        </div>
+    </div>
+    <div class="row align-items-start me-0">
+        <div class="col-md-12 pe-0">
+            <table class="table table-striped table-hover">
+                <thead class="shadow-sm">
+                    <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                        <td>Value 1</td>
+                        <td>Value 2</td>
+                        <td>Value 3</td>
+                        <td>Value 4</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Baris 1 Colom 1</td>
+                        <td>Baris 1 Colom 2</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Baris 2 Colom 1</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

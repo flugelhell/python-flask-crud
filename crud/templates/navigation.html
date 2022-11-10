@@ -1,0 +1,49 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg {% if request.url_rule.endpoint != 'home.index' %}bg-teal{% endif %} p-0">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if request.url_rule.endpoint != 'home.index'%}
+        <a class="navbar-brand px-2 mx-0" href="{{ url_for('index') }}"><i class="fas fa-th fa-lg"></i></a>
+        <a class="navbar-brand px-2 mx-0" href="#">{{root_menu_name}}Navbar</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle font-small" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="profile-img rounded-circle" src="{{ url_for('static', filename='/images/default_profile.jpg') }}" alt="Profile Image"> Yayat Suyatna
+                    </a>
+                    <ul class="dropdown-menu user-nav">
+                        <li><a class="dropdown-item font-small text-wrap" href="#">My Profile</a></li>
+                        <li><a class="dropdown-item font-small text-wrap" href="{{ url_for('auth.logout')}}">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

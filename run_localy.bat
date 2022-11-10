@@ -1,0 +1,1 @@
+flask --app crud --debug run

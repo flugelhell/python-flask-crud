@@ -15,12 +15,28 @@
     margin: 10px;
     width: 320px;
     overflow-y: auto;
+    z-index: 100;
 }
 
-/* Nav */
+/* Navigation */
 /* .nav-link {
     padding: 4px;
 } */
+.navbar .nav-link,
+.navbar-brand,
+.nav-item {
+    color: white;
+}
+
+.navbar .nav-link:hover,
+.navbar-brand:hover {
+    color: white;
+    background-color: teal;
+}
+
+.navbar-brand:focus {
+    color: white;
+}
 
 .profile-img {
     width: 28px;
@@ -56,6 +72,7 @@
     background-color: #17A2B8;
 }
 
+/* Home Menu */
 .home-search {
     height: 100px;
 }
@@ -71,12 +88,27 @@
     box-shadow: rgba(0, 0, 0, 0.24) 2px 4px 8px;
 }
 
-
 .bg-home {
     background-color: teal;
-    background-image: url('../images/home-background.jpg');
+    background: url('../images/home-background.jpg') no-repeat 0 0 fixed;
 }
 
 /* .container .row .col-md-2 {
     border: 1px solid grey;
 } */
+
+/* Table */
+table thead {
+    font-size: 12px;
+    font-weight: bold;
+    color: #6b6b6e;
+}
+
+table thead td {
+    padding: 12px !important;
+}
+
+.table-striped tbody td {
+    font-size: 12px;
+    color: grey !important;
+}

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap-5.2.2-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendors/fontawesome-free-5.15.4-web/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/animate.css/4.1.1/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -18,10 +19,15 @@
         <span type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></span>
     </div>
     {% endfor %}
-    {% block header %}{% endblock %}
-    {% block content %}{% endblock %}
+    <!-- Container -->
+    <div class="container-fluid p-0 vh-100 {% if request.url_rule.endpoint == 'home.index' %} bg-home {% endif %}">
+        {% block navigation %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
     <script src="{{ url_for('static', filename='/vendors/bootstrap-5.2.2-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='/vendors/jquery-3.6.1/jquery-3.6.1.min.js') }}"></script>
     <!-- <script src="{{ url_for('static', filename='/vendors/bootstrap-notify-3.1.3/dist/bootstrap-notify.min.js') }}"></script> -->
+
+</body>
 
 </html>

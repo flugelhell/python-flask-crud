@@ -1,7 +1,14 @@
 import os
 
 from flask import Flask, render_template
-from crud.auth import login_required
+
+
+def page_not_found(e):
+    return render_template('error.html', error_code='404', error_message=e), 404
+
+
+def internal_server_error(e):
+    return render_template('error.html', error_code='500', error_message=e), 500
 
 
 def create_app():
@@ -16,14 +23,18 @@ def create_app():
     # except OSError:
     #     pass
 
+    # Error Page Handler
+    app.register_error_handler(404, page_not_found)
+    app.register_error_handler(500, page_not_found)
+
     from . import home
-    from . import hello
     from . import auth
+    from . import settings_menu as menu
 
     app.register_blueprint(home.bp)
     app.add_url_rule('/', endpoint='index')
-    app.register_blueprint(hello.bp)
     app.register_blueprint(auth.bp)
+    app.register_blueprint(menu.bp)
 
     # from . import db
     # db.init_app(app)

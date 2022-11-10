@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ERROR {{ error_code }}
+{% endblock%}
+
+{% block content %}
+<div class="card position-absolute top-50 start-50 translate-middle shadow p-3 mb-5 bg-body " style="width: 28rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center h1">{{ error_code }}</h5>
+        <p class="card-text">{{ error_message }}</p>
+        <a href="{{url_for('index')}}" class="btn btn-primary">Back to Home</a>
+
+    </div>
+</div>
+{% endblock %}

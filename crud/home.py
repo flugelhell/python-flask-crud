@@ -9,7 +9,4 @@ bp = Blueprint('home', __name__)
 @bp.route('/')
 @login_required
 def index():
-    res = db.executeQuery('select * from res_userss')
-    if res['status'] == False:
-        flash('Database Error')
     return render_template('index.html')

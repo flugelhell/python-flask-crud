@@ -48,12 +48,13 @@
 
 .user-nav {
     min-width: 150px;
-    max-width: 150px;
+    /* max-width: 150px; */
 }
 
+/* 
 .user-nav-list {
     max-width: 150px;
-}
+} */
 
 /* Background Color */
 .bg-teal {

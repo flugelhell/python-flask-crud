@@ -35,8 +35,8 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle font-small" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="profile-img rounded-circle" src="{{ url_for('static', filename='/images/default_profile.jpg') }}" alt="Profile Image"> Yayat Suyatna
+                    <a class="nav-link dropdown-toggle font-small user-nav text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="profile-img rounded-circle" src="{{ url_for('static', filename='/images/default_profile.jpg') }}" alt="Profile Image"> <span>{{g.display_name}}</span>
                     </a>
                     <ul class="dropdown-menu user-nav">
                         <li><a class="dropdown-item font-small text-wrap" href="#">My Profile</a></li>

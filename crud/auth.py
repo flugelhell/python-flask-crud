@@ -4,6 +4,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+from . import db
 
 # from flaskr.db import get_db
 
@@ -48,21 +49,21 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
+        query = "select id, username, password, display_name from tblusers where username = %s limit 1 "
+        params = (username,)
         error = None
-        user = {
-            'id': '99',
-            'name': "yayat",
-            'password': generate_password_hash('yyt')
-        }
-
-        if user is None:
-            error = 'Incorrect username.'
-        elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
+        resp = db.executeQuery(query, params).get('data')
+        if len(resp) <= 0:
+            error = "Incorrect Username"
+        elif not check_password_hash(resp[0][2], password):
+            error = "Incorrect Password"
 
         if error is None:
+            resp = resp[0]
             session.clear()
-            session['user_id'] = user['id']
+            session['user_id'] = resp[0]
+            session['username'] = resp[1]
+            session['display_name'] = resp[3]
             return redirect(url_for('index'))
 
         flash(error)
@@ -79,11 +80,15 @@ def login():
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
+    username = session.get('username')
+    display_name = session.get('display_name')
 
     if user_id is None:
         g.user = None
     else:
         g.user = user_id
+        g.username = username
+        g.display_name = display_name
 
 
 @bp.route('/logout')

@@ -9,6 +9,7 @@ This is Index
 {% endblock %}
 
 {% block content %}
+{{ session.get('menu') }}
 <!-- Content -->
 <div class="container-fluid text-center col-md-12">
     <div class="row home-search"></div>
@@ -17,10 +18,11 @@ This is Index
     <div class="row justify-content-md-left">
         <div class="col-md-2 mb-4">
             <a href="#" class="text-decoration-none text-white link-home-icon">
-                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/menu/icon_settings.png') }}" alt="icon">
                 <div>App Name</div>
             </a>
         </div>
+
         <div class="col-md-2 mb-4">
             <a href="#" class="text-decoration-none text-white link-home-icon">
                 <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">

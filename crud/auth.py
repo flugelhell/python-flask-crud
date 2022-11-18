@@ -1,4 +1,5 @@
 import functools
+import json
 
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
@@ -49,21 +50,41 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        query = "select id, username, password, display_name from tblusers where username = %s limit 1 "
+        query = "SELECT id, username, password, display_name FROM tblusers WHERE username = %s and status=true LIMIT 1 "
         params = (username,)
         error = None
         resp = db.executeQuery(query, params).get('data')
-        if len(resp) <= 0:
+
+        if resp == None:
+            error = "Internal Server Error"
+        elif len(resp) <= 0:
             error = "Incorrect Username"
         elif not check_password_hash(resp[0][2], password):
             error = "Incorrect Password"
 
         if error is None:
+            query = """ SELECT id_user, tm.id as menu_id, tm.name, tm.parent_id, tm.sequence, tm.status, tm.parent_path, tm.img_menu, tm.action_link
+                        FROM rel_user_menu rum
+                        LEFT JOIN tblmenus tm on tm.id=rum.id_menu
+                        WHERE rum.id_user = %s
+                        ORDER BY tm.parent_id, tm.sequence
+
+                    """
+
+            menu = db.executeQuery(query, (resp[0][0],)).get('data')
+            if menu == None:
+                flash("Internal Server Error")
+
             resp = resp[0]
             session.clear()
-            session['user_id'] = resp[0]
+            # set user information
+            session['id_user'] = resp[0]
             session['username'] = resp[1]
             session['display_name'] = resp[3]
+            # set menu information
+            session['menus'] = menu
+            # print(menu)
+
             return redirect(url_for('index'))
 
         flash(error)
@@ -79,14 +100,14 @@ def login():
 
 @bp.before_app_request
 def load_logged_in_user():
-    user_id = session.get('user_id')
+    id_user = session.get('id_user')
     username = session.get('username')
     display_name = session.get('display_name')
 
-    if user_id is None:
+    if id_user is None:
         g.user = None
     else:
-        g.user = user_id
+        g.user = id_user
         g.username = username
         g.display_name = display_name
 

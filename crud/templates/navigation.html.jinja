@@ -10,6 +10,25 @@
         <a class="navbar-brand px-2 mx-0" href="#">{{root_menu_name}}Navbar</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                {% for menu_item in navigation_menu%}
+                {% if menu_item['is_parent']%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{menu_item['menu_name']}}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for child_menu in menu_item['child_menu']%}
+                        <li><a class="dropdown-item" href="{{child_menu['action_link']}}">{{child_menu['menu_name']}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{menu_item['action_link']}}">{{menu_item['menu_name']}}</a>
+                </li>
+                {% endif%}
+                {% endfor %}
+                {# Contoh menu
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
@@ -29,6 +48,7 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                 </li>
+                #}
             </ul>
         </div>
         {% endif %}

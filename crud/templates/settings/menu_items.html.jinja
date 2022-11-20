@@ -1,22 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base.html.jinja' %}
 
 {% block title %}
-This is Index
+{{title}}
 {% endblock %}
 
 {% block navigation %}
-{% include 'navigation.html' %}
+{% include 'navigation.html.jinja' %}
 {% endblock %}
 
 {% block content %}
 <!-- Content -->
 <div class="container-fluid col-md-12 p-0">
-    <div class="row align-items-start p-3 border-bottom pe-0 me-0">
+    <div class="row align-items-start px-3 py-2 pe-0 me-0">
         <div class="col-md-6">
-            Nama Menu
+            <span class="breadcrumb">Home</span>
         </div>
         <div class="col-md-6">
             One of three columns
+        </div>
+    </div>
+    <div class="row align-items-start px-3 pb-2 border-bottom pe-0 me-0">
+        <div class="col-md-6">
+            <a href="#" class="btn btn-secondary bg-teal btn-sm rounded-0 border-0">Create</a>
         </div>
     </div>
     <div class="row align-items-start me-0">

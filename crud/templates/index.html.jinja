@@ -1,40 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'base.html.jinja' %}
 
 {% block title %}
-This is Index
+{{title}}
 {% endblock %}
 
 {% block navigation %}
-{% include 'navigation.html' %}
+{% include 'navigation.html.jinja' %}
 {% endblock %}
 
 {% block content %}
-{{ session.get('menu') }}
 <!-- Content -->
 <div class="container-fluid text-center col-md-12">
     <div class="row home-search"></div>
 </div>
 <div class="container text-center col-md-6">
     <div class="row justify-content-md-left">
+        {% for menu in session.get('menus') %}
+        {% if menu['parent_id'] == None %}
+        {% set icon = '/images/menu/' ~ menu['img_menu'] %}
+        {% if menu['img_menu'] == None %}
+        {% set icon = '/images/menu/default_icon.png' %}
+        {% endif %}
         <div class="col-md-2 mb-4">
-            <a href="#" class="text-decoration-none text-white link-home-icon">
-                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/menu/icon_settings.png') }}" alt="icon">
-                <div>App Name</div>
+            <a href="{{ menu['action_link'] ~ '?menu_id=' ~ menu['id']}}" class="text-decoration-none text-white link-home-icon">
+                <img class="home-icon rounded-2" src="{{ url_for('static', filename=icon) }}" alt="icon">
+                <div>{{ menu['menu_name'] }}</div>
             </a>
         </div>
-
-        <div class="col-md-2 mb-4">
-            <a href="#" class="text-decoration-none text-white link-home-icon">
-                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
-                <div>App Name</div>
-            </a>
-        </div>
-        <div class="col-md-2 mb-4">
-            <a href="#" class="text-decoration-none text-white link-home-icon">
-                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
-                <div>App Name</div>
-            </a>
-        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- 
         <div class="col-md-2 mb-4">
             <a href="#" class="text-decoration-none text-white link-home-icon">
                 <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
@@ -59,6 +54,18 @@ This is Index
                 <div>App Name</div>
             </a>
         </div>
+        <div class="col-md-2 mb-4">
+            <a href="#" class="text-decoration-none text-white link-home-icon">
+                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                <div>App Name</div>
+            </a>
+        </div>
+        <div class="col-md-2 mb-4">
+            <a href="#" class="text-decoration-none text-white link-home-icon">
+                <img class="home-icon rounded-2" src="{{ url_for('static', filename='/images/setting-icon.png') }}" alt="icon">
+                <div>App Name</div>
+            </a>
+        </div> -->
     </div>
 </div>
 {% endblock %}

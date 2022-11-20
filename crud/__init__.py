@@ -4,11 +4,11 @@ from flask import Flask, render_template
 
 
 def page_not_found(e):
-    return render_template('error.html', error_code='404', error_message=e), 404
+    return render_template('error.html.jinja', error_code='404', error_message=e), 404
 
 
 def internal_server_error(e):
-    return render_template('error.html', error_code='500', error_message=e), 500
+    return render_template('error.html.jinja', error_code='500', error_message=e), 500
 
 
 def create_app():

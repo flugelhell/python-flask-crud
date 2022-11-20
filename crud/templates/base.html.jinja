@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}{% if title is defined %}| {{session.get('app_name')}}{%else%}{{session.get('app_name')}}{%endif%}
+    </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/bootstrap-5.2.2-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/fontawesome-free-5.15.4-web/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='vendors/animate.css/4.1.1/animate.min.css') }}">

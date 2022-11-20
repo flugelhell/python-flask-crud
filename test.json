@@ -1,0 +1,45 @@
+[
+    {
+        "action_link": "/settings/menu_items",
+        "id": 3,
+        "img_menu": None,
+        "is_parent": False,
+        "menu_name": "Menu Items",
+        "parent_id": 1,
+        "parent_path": "Settings",
+        "sequence": 1,
+        "child_menu": []
+    },
+    {
+        "action_link": "#",
+        "id": 4,
+        "img_menu": None,
+        "is_parent": True,
+        "menu_name": "System Tools",
+        "parent_id": 1,
+        "parent_path": "Settings",
+        "sequence": 2,
+        "child_menu": [
+            {
+                "action_link": "#",
+                "id": 5,
+                "img_menu": None,
+                "is_parent": False,
+                "menu_name": "Group",
+                "parent_id": 4,
+                "parent_path": "Settings / System Tools",
+                "sequence": 1
+            },
+            {
+                "action_link": "#",
+                "id": 6,
+                "img_menu": None,
+                "is_parent": False,
+                "menu_name": "User",
+                "parent_id": 4,
+                "parent_path": "Settings / System Tools",
+                "sequence": 2
+            }
+        ]
+    }
+]
